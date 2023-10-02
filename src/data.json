@@ -1,0 +1,23 @@
+{
+  "title": "M. Inam",
+  "role": "Lead Engineer at Company",
+  "shortInfo": "I build accessible, inclusive products and digital experiences for the web.",
+  "description": "I'm a software engineer based in Pakistan specializing in building (and occasionally designing) exceptional websites, applications, and everything in between.",
+  "socialLinks": [
+    {
+      "name": "twitter",
+      "url": "https://twitter.com/minam",
+      "icon": "ri:twitter-fill"
+    },
+    {
+      "name": "github",
+      "url": "",
+      "icon": "mdi:github"
+    }
+  ],
+  "resumeLink": {
+    "url": "link-for-download",
+    "name": "Download Resume",
+    "icon": "ri:file-download-fill"
+  }
+}
