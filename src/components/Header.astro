@@ -1,0 +1,67 @@
+---
+const { title, role, shortInfo, socialLinks, resumeLink } = Astro.props;
+import customizer from "./../customizer.json";
+import { Icon } from "astro-icon";
+---
+
+<div>
+  <div class="space-y-4 max-w-xs">
+    <h1 class={`lg:text-4xl font-bold tracking-tight text-5xl ${customizer.primaryText}`}>
+      <a href="/">{title}</a>
+    </h1>
+    <h2 class={`lg:text-lg font-medium tracking-tight text-xl ${customizer.primaryText}`}>
+      {role}
+    </h2>
+    <p>{shortInfo}</p>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav class="flex-grow lg:flex items-center hidden" aria-label="In-page jump links">
+  <ul class="w-max">
+    <li>
+      <a class="group flex items-center py-3" href="#about">
+        <span
+          class="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none"
+        ></span>
+        <span
+          class="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200"
+          >About</span
+        >
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="space-y-4">
+  <!-- Resume Button -->
+  {
+    resumeLink ? (
+      <p>
+        <a
+          href={resumeLink.url}
+          class="inline-flex items-center gap-2 p-2 rounded border border-current"
+        >
+          <Icon name={resumeLink.icon} width="24" height="24" />
+          <small>{resumeLink.name}</small>
+        </a>
+      </p>
+    ) : (
+      ""
+    )
+  }
+  <!-- Social Links -->
+  <div class="flex items-center gap-2" aria-label="Social media">
+    {
+      socialLinks.map(socialLink => (
+        <a
+          href={socialLink.url}
+          title={`${socialLink.name} link`}
+          class="opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity duration-200 focus:outline-none"
+        >
+          <Icon name={socialLink.icon} width="32" height="32" />
+        </a>
+      ))
+    }
+  </div>
+</div>
