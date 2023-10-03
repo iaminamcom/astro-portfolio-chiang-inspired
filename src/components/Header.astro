@@ -1,6 +1,5 @@
 ---
 const { title, role, shortInfo, socialLinks, resumeLink, menu } = Astro.props;
-import customizer from "./../customizer.json";
 import { Icon } from "astro-icon";
 import { getCollection, getEntry } from "astro:content";
 // const allExperiences = await getCollection("experiences");
@@ -8,12 +7,14 @@ import { getCollection, getEntry } from "astro:content";
 
 <div>
   <div class="space-y-4 max-w-xs">
-    <h1 class={`lg:text-4xl font-bold tracking-tight text-5xl ${customizer.primaryText}`}>
-      <a href="/">{title}</a>
-    </h1>
-    <h2 class={`lg:text-lg font-medium tracking-tight text-xl ${customizer.primaryText}`}>
-      {role}
-    </h2>
+    <div class="text-text-active dark:text-dark-text-active">
+      <h1 class="lg:text-4xl font-bold tracking-tight text-5xl">
+        <a href="/">{title}</a>
+      </h1>
+      <h2 class="lg:text-lg font-medium tracking-tight text-xl">
+        {role}
+      </h2>
+    </div>
     <p>{shortInfo}</p>
   </div>
 </div>
@@ -24,7 +25,10 @@ import { getCollection, getEntry } from "astro:content";
     {
       menu.map((link: { name: string; url: string }) => (
         <li>
-          <a class="group flex items-center gap-2 py-3" href={link.url}>
+          <a
+            class="group flex items-center gap-2 py-3 duration-200 hover:text-text-active hover:dark:text-dark-text-active focus:text-text-active focus:dark:text-dark-text-active focus:outline"
+            href={link.url}
+          >
             <span class="border border-current transition-all group-hover:w-16 group-focus-visible:w-16 w-8" />
             <strong class="text-xs tracking-widest">{link.name.toUpperCase()}</strong>
           </a>
@@ -41,7 +45,7 @@ import { getCollection, getEntry } from "astro:content";
       <p>
         <a
           href={resumeLink.url}
-          class="inline-flex items-center gap-2 p-2 rounded border border-current"
+          class="inline-flex items-center gap-2 p-2 rounded border border-current duration-200 hover:text-text-active hover:dark:text-dark-text-active focus:text-text-active focus:dark:text-dark-text-active focus:outline"
         >
           <Icon name={resumeLink.icon} width="24" height="24" />
           <small>{resumeLink.name}</small>
@@ -58,7 +62,7 @@ import { getCollection, getEntry } from "astro:content";
         <a
           href={socialLink.url}
           title={`${socialLink.name} link`}
-          class="opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity duration-200 focus:outline-none"
+          class="duration-200 hover:text-text-active hover:dark:text-dark-text-active focus:text-text-active focus:dark:text-dark-text-active focus:outline"
         >
           <Icon name={socialLink.icon} width="32" height="32" />
         </a>
