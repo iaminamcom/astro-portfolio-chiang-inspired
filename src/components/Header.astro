@@ -1,7 +1,9 @@
 ---
-const { title, role, shortInfo, socialLinks, resumeLink } = Astro.props;
+const { title, role, shortInfo, socialLinks, resumeLink, menu } = Astro.props;
 import customizer from "./../customizer.json";
 import { Icon } from "astro-icon";
+import { getCollection, getEntry } from "astro:content";
+// const allExperiences = await getCollection("experiences");
 ---
 
 <div>
@@ -19,17 +21,16 @@ import { Icon } from "astro-icon";
 <!-- Nav -->
 <nav class="flex-grow lg:flex items-center hidden" aria-label="In-page jump links">
   <ul class="w-max">
-    <li>
-      <a class="group flex items-center py-3" href="#about">
-        <span
-          class="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none"
-        ></span>
-        <span
-          class="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200"
-          >About</span
-        >
-      </a>
-    </li>
+    {
+      menu.map((link: { name: string; url: string }) => (
+        <li>
+          <a class="group flex items-center gap-2 py-3" href={link.url}>
+            <span class="border border-current transition-all group-hover:w-16 group-focus-visible:w-16 w-8" />
+            <strong class="text-xs tracking-widest">{link.name.toUpperCase()}</strong>
+          </a>
+        </li>
+      ))
+    }
   </ul>
 </nav>
 
