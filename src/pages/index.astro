@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getEntry, getCollection } from "astro:content";
+import ExperienceCard from "../components/ExperienceCard.astro";
+
+// Render about page content
+const aboutPage = await getEntry("about", "index");
+const { Content } = await aboutPage.render();
+// Experiences
+const experiences = await getCollection("experiences");
+---
+
+<Layout>
+  <section id="about" class="scroll-mt-12 lg:scroll-mt-24" aria-label="About me">
+    <div
+      class="sticky top-0 z-20 -mx-6 bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0"
+    >
+      <h2 class="text-sm font-bold tracking-widest text-slate-200 lg:sr-only">ABOUT</h2>
+    </div>
+    <div class="space-y-4 content">
+      <Content />
+    </div>
+  </section>
+  <!-- Experiences -->
+  <section class="" id="experience">
+    <ol>
+      {experiences.map(async job => <ExperienceCard job={job} />)}
+    </ol>
+  </section>
+  <!-- Projects -->
+  <section class="" id="projects"></section>
+</Layout>

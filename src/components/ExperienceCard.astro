@@ -1,0 +1,43 @@
+---
+import Icon from "astro-icon";
+const { job } = Astro.props;
+const { Content } = await job.render();
+---
+
+<li class="md:flex lg:space-x-6 space-y-2 lg:space-y-0">
+  <div class="flex-shrink-0 text-sm opacity-50">{job.data.period}</div>
+  <div class="space-y-4">
+    <div class="space-y-1">
+      <h3 class="text-xl font-bold leading-tight">{job.data.title}</h3>
+      <p class="font-semibold text-text-dim dark:text-dark-text-dim">{job.data.role}</p>
+    </div>
+    <div>
+      <Content />
+    </div>
+    {
+      job.data.links.length ? (
+        <div class="text-sm flex flex-wrap gap-2">
+          {job.data.links.map(link => (
+            <a href={link.url} class="inline-flex items-center gap-1">
+              <Icon name="gg:link" width="16" height="16" />
+              <span>{link.name}</span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        ""
+      )
+    }
+    {
+      job.data.skills ? (
+        <div class="text-vivid flex flex-wrap gap-2 text-xs font-bold">
+          {job.data.skills.map(skill => (
+            <a class="bg-vivid bg-opacity-10 py-1 px-2 rounded-full">{skill}</a>
+          ))}
+        </div>
+      ) : (
+        ""
+      )
+    }
+  </div>
+</li>
