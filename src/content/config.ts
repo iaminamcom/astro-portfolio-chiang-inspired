@@ -11,6 +11,17 @@ const experienceCollection = defineCollection({
   }),
 });
 
+const projectCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    image: z.string(),
+    skills: z.array(z.string()),
+    features: z.array(z.object({ name: z.string(), url: z.string(), icon: z.string() })),
+  }),
+});
+
 export const collections = {
   experiences: experienceCollection,
+  projects: projectCollection,
 };

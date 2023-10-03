@@ -1,0 +1,53 @@
+---
+import Icon from "astro-icon";
+import { Image } from "astro:assets";
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<li class="md:flex md:space-x-6 space-y-2 md:space-y-0">
+  <div class="flex-shrink-0 text-sm text-text-dim dark:text-dark-text-dim md:w-24">
+    <Image
+      src={project.data.cover}
+      alt={project.data.coverAlt}
+      class="rounded border border-current"
+      width="320"
+      height="320"
+      format="jpeg"
+    />
+  </div>
+  <div class="space-y-4">
+    <div class="space-y-1">
+      <h3 class="text-xl font-bold leading-tight">{project.data.title}</h3>
+      <p class="font-semibold text-text-dim dark:text-dark-text-dim">{project.data.role}</p>
+    </div>
+    <div>
+      <Content />
+    </div>
+    {
+      project.data.features.length ? (
+        <div class="text-sm flex flex-wrap gap-2">
+          {project.data.features.map(feature => (
+            <a href={feature.url} class="inline-flex items-center gap-1">
+              <Icon name={feature.icon} width="16" height="16" />
+              <span>{feature.name}</span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        ""
+      )
+    }
+    {
+      project.data.skills ? (
+        <div class="text-vivid flex flex-wrap gap-2 text-xs font-bold">
+          {project.data.skills.map(skill => (
+            <a class="bg-vivid bg-opacity-10 py-2 px-4 rounded-full">{skill}</a>
+          ))}
+        </div>
+      ) : (
+        ""
+      )
+    }
+  </div>
+</li>
