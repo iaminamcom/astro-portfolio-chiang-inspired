@@ -2,13 +2,15 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require('tailwindcss/colors')
 
-const shade = 'slate'
+const shade = 'slate',
+	vivid = 'lime'
 
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue,json}'],
 	theme: {
 		extend: {
 			colors: {
+				vivid: colors[vivid]['400'],
 				text: {
 					dim: colors[shade]['500'],
 					DEFAULT: colors[shade]['700'],
