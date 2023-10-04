@@ -2,9 +2,7 @@
 import "@fontsource-variable/inter";
 
 import Header from "../components/Header.astro";
-import data from "./../data.json";
-import customizer from "./../customizer.json";
-const classes = Object.values(customizer.globalStyle).join(" ");
+import data from "../content/data/site.json";
 ---
 
 <!doctype html>
@@ -17,7 +15,7 @@ const classes = Object.values(customizer.globalStyle).join(" ");
     <meta name="generator" content={Astro.generator} />
     <title>{data.title}</title>
   </head>
-  <body class={classes}>
+  <body class="bg-bg text-text dark:bg-dark-bg dark:text-dark-text">
     <div class={`mx-auto min-h-screen max-w-screen-xl px-8 py-12 md:px-16 md:py-24 lg:py-0`}>
       <div class="lg:flex lg:justify-between lg:gap-4">
         <header
