@@ -31,5 +31,17 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [
+		function ({ addComponents, theme }) {
+			addComponents({
+				'.content a': {
+					color: theme('colors.text.active'),
+					fontWeight: '600',
+				},
+				'.content-dark a': {
+					color: theme('colors.dark.text.active'),
+				},
+			});
+		},
+	],
 }
