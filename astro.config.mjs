@@ -4,7 +4,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://github.com/minamme',
+  site: 'https://minamme.github.com/',
   base: '/astro-portfolio-chiang-inspired',
   integrations: [tailwind()]
 });
