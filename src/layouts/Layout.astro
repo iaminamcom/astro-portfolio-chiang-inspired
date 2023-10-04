@@ -3,10 +3,11 @@ import "@fontsource-variable/inter";
 
 import Header from "../components/Header.astro";
 import data from "../content/data/site.json";
+import Spotlight from "../components/Spotlight.astro";
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth bg-red-500">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={data.description} />
@@ -15,15 +16,18 @@ import data from "../content/data/site.json";
     <meta name="generator" content={Astro.generator} />
     <title>{data.title}</title>
   </head>
-  <body class="bg-bg text-text dark:bg-dark-bg dark:text-dark-text">
-    <div class={`mx-auto min-h-screen max-w-screen-xl px-8 py-12 md:px-16 md:py-24 lg:py-0`}>
-      <div class="lg:flex lg:justify-between lg:gap-4">
-        <header
-          class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24 space-y-8"
-        >
-          <Header {...data} />
-        </header>
-        <main class="pt-24 lg:w-1/2 lg:py-24 space-y-12 md:space-y-24"><slot /></main>
+  <body>
+    <Spotlight />
+    <div class="bg-bg/90 text-text dark:bg-dark-bg/90 dark:text-dark-text relative">
+      <div class={`mx-auto min-h-screen max-w-screen-xl px-8 py-12 md:px-16 md:py-24 lg:py-0`}>
+        <div class="lg:flex lg:justify-between lg:gap-4">
+          <header
+            class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24 space-y-8"
+          >
+            <Header {...data} />
+          </header>
+          <main class="pt-24 lg:w-1/2 lg:py-24 space-y-12 md:space-y-24"><slot /></main>
+        </div>
       </div>
     </div>
   </body>

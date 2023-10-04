@@ -1,0 +1,20 @@
+---
+
+---
+
+<div
+  class="cursor-spotlight fixed -z-10 h-full w-full top-0 left-0 hidden lg:block pointer-events-none"
+>
+</div>
+
+<script>
+  const spotlightDiv = document.querySelector(".cursor-spotlight") as HTMLDivElement;
+
+  if (spotlightDiv) {
+    spotlightDiv.style.background = `radial-gradient(circle at 0 0, #00000000 10px, #000000ee 350px)`;
+
+    window.addEventListener("mousemove", e => {
+      spotlightDiv.style.background = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, #00000000 10px, #000000ee 350px)`;
+    });
+  }
+</script>
